@@ -1,0 +1,28 @@
+<h2>YouTube Tag Generator</h2>
+
+<input id="keyword" placeholder="Enter keyword">
+
+<button onclick="generate()">Generate Tags</button>
+
+<div id="result"></div>
+
+<script>
+
+function generate(){
+
+let k=document.getElementById("keyword").value
+
+let tags=[
+k,
+k+" tutorial",
+k+" tips",
+"best "+k,
+k+" youtube",
+k+" guide"
+]
+
+document.getElementById("result").innerText=tags.join(", ")
+
+}
+
+</script>

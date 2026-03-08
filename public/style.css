@@ -1,14 +1,14 @@
 body{
 font-family:Arial;
-background:#f5f6fa;
+background:#f4f6f9;
 margin:0;
 }
 
 header{
 background:#ff0000;
 color:white;
-padding:20px;
 text-align:center;
+padding:25px;
 }
 
 nav{
@@ -21,6 +21,7 @@ nav a{
 color:white;
 margin:10px;
 text-decoration:none;
+font-weight:bold;
 }
 
 .tools{
@@ -34,15 +35,26 @@ padding:30px;
 background:white;
 padding:20px;
 border-radius:10px;
-box-shadow:0 5px 15px rgba(0,0,0,0.1);
+box-shadow:0 4px 12px rgba(0,0,0,0.1);
+}
+
+.tool-card h3{
+margin-top:0;
 }
 
 .tool-card a{
+display:inline-block;
 background:#ff0000;
 color:white;
 padding:8px 15px;
-display:inline-block;
-margin-top:10px;
-text-decoration:none;
 border-radius:5px;
+text-decoration:none;
+margin-top:10px;
+}
+
+footer{
+background:#222;
+color:white;
+text-align:center;
+padding:10px;
 }
