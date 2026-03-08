@@ -1,19 +1,18 @@
 body{
-font-family:Arial;
+font-family: Arial;
 margin:0;
-background:#f4f6fb;
+background:#f5f7fb;
 }
 
-header{
+.navbar{
 display:flex;
 justify-content:space-between;
-align-items:center;
-padding:20px;
-background:#111;
+padding:15px 40px;
+background:#0d1117;
 color:white;
 }
 
-nav a{
+.navbar a{
 color:white;
 margin-left:20px;
 text-decoration:none;
@@ -22,274 +21,45 @@ text-decoration:none;
 .hero{
 text-align:center;
 padding:80px 20px;
-background:linear-gradient(135deg,#ff4b2b,#ff416c);
+background:linear-gradient(120deg,#ff4d4d,#ff7a18);
 color:white;
 }
 
-.main-btn{
-display:inline-block;
-margin-top:20px;
-padding:12px 25px;
-background:black;
-color:white;
-text-decoration:none;
+.hero input{
+padding:12px;
+width:300px;
+border:none;
 border-radius:6px;
 }
 
 .tools{
-padding:60px;
-text-align:center;
+padding:60px 40px;
 }
 
 .tool-grid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
 gap:20px;
-margin-top:30px;
 }
 
-.tool{
+.tool-card{
 background:white;
 padding:25px;
 border-radius:10px;
-box-shadow:0 5px 15px rgba(0,0,0,0.1);
-}
-
-.tool a{
-display:inline-block;
-margin-top:10px;
-color:#ff416c;
 text-decoration:none;
+color:black;
+box-shadow:0 4px 10px rgba(0,0,0,0.1);
+transition:0.2s;
 }
 
-.about{
-padding:60px;
-text-align:center;
-background:white;
+.tool-card:hover{
+transform:translateY(-5px);
 }
 
 footer{
-background:#111;
+background:#0d1117;
 color:white;
-text-align:center;
-padding:30px;
-}
-
-.footer-links a{
-color:white;
-margin:10px;
-text-decoration:none;
-}
-.search-box{
-margin-top:25px;
-}
-
-.search-box input{
-
-width:350px;
-padding:12px;
-border-radius:6px;
-border:none;
-margin-right:10px;
-}
-
-.search-box button{
-
-padding:12px 18px;
-background:black;
-color:white;
-border:none;
-border-radius:6px;
-cursor:pointer;
-}
-
-.download-link{
-display:inline-block;
-margin-top:10px;
-color:white;
-background:#111;
-padding:10px 15px;
-border-radius:6px;
-text-decoration:none;
-}
-.video-result{
-
-display:flex;
-gap:40px;
-margin-top:40px;
-justify-content:center;
-flex-wrap:wrap;
-
-}
-
-.video-info{
-
-background:white;
 padding:20px;
-border-radius:10px;
-box-shadow:0 5px 20px rgba(0,0,0,0.1);
-max-width:350px;
 text-align:center;
-
-}
-
-.video-info img{
-
-width:100%;
-border-radius:8px;
-
-}
-
-.download-table{
-
-background:white;
-padding:25px;
-border-radius:10px;
-box-shadow:0 5px 20px rgba(0,0,0,0.1);
-min-width:280px;
-
-}
-
-.download-row{
-
-display:flex;
-justify-content:space-between;
-margin:10px 0;
-padding:10px;
-border-bottom:1px solid #eee;
-
-}
-
-.download-row a{
-
-background:#ff416c;
-color:white;
-padding:8px 14px;
-border-radius:6px;
-text-decoration:none;
-
-}
-.video-container{
-
-display:flex;
-gap:40px;
 margin-top:40px;
-justify-content:center;
-flex-wrap:wrap;
-
-}
-
-.video-card{
-
-background:white;
-padding:20px;
-border-radius:10px;
-box-shadow:0 5px 20px rgba(0,0,0,0.1);
-max-width:320px;
-text-align:center;
-
-}
-
-.video-card img{
-
-width:100%;
-border-radius:8px;
-
-}
-
-.video-card button{
-
-margin-top:10px;
-padding:10px 15px;
-background:#ff416c;
-color:white;
-border:none;
-border-radius:6px;
-cursor:pointer;
-
-}
-
-.download-card{
-
-background:white;
-padding:25px;
-border-radius:10px;
-box-shadow:0 5px 20px rgba(0,0,0,0.1);
-min-width:300px;
-
-}
-
-.tabs{
-
-display:flex;
-gap:10px;
-margin-bottom:20px;
-
-}
-
-.tab{
-
-padding:10px 15px;
-border:none;
-background:#eee;
-cursor:pointer;
-border-radius:5px;
-
-}
-
-.tab.active{
-
-background:#ff416c;
-color:white;
-
-}
-
-.tab-content{
-
-display:none;
-
-}
-
-.tab-content.active{
-
-display:block;
-
-}
-
-.download-row{
-
-display:flex;
-justify-content:space-between;
-padding:10px;
-border-bottom:1px solid #eee;
-
-}
-
-.download-row a{
-
-background:#111;
-color:white;
-padding:6px 12px;
-border-radius:5px;
-text-decoration:none;
-
-}
-
-.loader{
-
-border:6px solid #eee;
-border-top:6px solid #ff416c;
-border-radius:50%;
-width:50px;
-height:50px;
-animation:spin 1s linear infinite;
-margin:40px auto;
-
-}
-
-@keyframes spin{
-
-0%{transform:rotate(0deg)}
-100%{transform:rotate(360deg)}
-
 }

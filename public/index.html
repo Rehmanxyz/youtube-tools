@@ -1,14 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>ProYouTube Tools – Free YouTube Tools</title>
+<title>ProYouTube Tools - Free YouTube Creator Tools</title>
 
-<meta name="description" content="Free YouTube tools for creators. Download videos, generate tags, titles and optimize your channel growth.">
+<meta name="description" content="Free YouTube creator tools. Generate tags, titles, hashtags, and analyze your channel to grow faster.">
 
 <link rel="stylesheet" href="style.css">
 
@@ -16,241 +14,99 @@
 
 <body>
 
-<header>
-
+<header class="navbar">
 <div class="logo">ProYouTube Tools</div>
 
 <nav>
-
 <a href="/">Home</a>
-<a href="/tools/downloader.html">Downloader</a>
+<a href="/tools/tag-generator.html">Tag Generator</a>
+<a href="/tools/title-generator.html">Title Generator</a>
+<a href="/tools/keyword-generator.html">Keyword Tool</a>
 <a href="/about.html">About</a>
-<a href="/privacy.html">Privacy</a>
-<a href="/terms.html">Terms</a>
-
 </nav>
-
 </header>
 
 
 <section class="hero">
 
-<h1>Download & Optimize Your YouTube Content</h1>
+<h1>Free YouTube Creator Tools</h1>
 
-<p>
-Free powerful tools for YouTube creators. Download videos instantly and improve your channel growth.
-</p>
+<p>Boost your YouTube channel with powerful SEO tools. Generate titles, tags, keywords and grow your audience faster.</p>
 
 <div class="search-box">
-
-<input id="videoURL" placeholder="Paste YouTube link">
-<button onclick="downloadVideo()">Download</button>
-
-<div id="downloadResult"></div>
+<input placeholder="Search a tool..." id="toolSearch">
+</div>
 
 </section>
 
 
 <section class="tools">
 
-<h2>Popular YouTube Tools</h2>
+<h2>Popular Tools</h2>
 
 <div class="tool-grid">
 
-<div class="tool">
-<h3>YouTube Video Downloader</h3>
-<p>Download YouTube videos in HD quality instantly.</p>
-<a href="/tools/downloader.html">Open Tool</a>
+<a class="tool-card" href="/tools/tag-generator.html">
+<h3>Tag Generator</h3>
+<p>Generate SEO optimized YouTube tags for your videos.</p>
+</a>
+
+<a class="tool-card" href="/tools/title-generator.html">
+<h3>Title Generator</h3>
+<p>Create catchy YouTube titles that attract viewers.</p>
+</a>
+
+<a class="tool-card" href="/tools/description-generator.html">
+<h3>Description Generator</h3>
+<p>Generate video descriptions that rank higher on YouTube.</p>
+</a>
+
+<a class="tool-card" href="/tools/keyword-generator.html">
+<h3>Keyword Generator</h3>
+<p>Find the best keywords for your YouTube videos.</p>
+</a>
+
+<a class="tool-card" href="/tools/hashtag-generator.html">
+<h3>Hashtag Generator</h3>
+<p>Create trending hashtags for YouTube videos.</p>
+</a>
+
+<a class="tool-card" href="/tools/thumbnail-downloader.html">
+<h3>Thumbnail Downloader</h3>
+<p>Download YouTube thumbnails in HD quality.</p>
+</a>
+
+<a class="tool-card" href="/tools/playlist-calculator.html">
+<h3>Playlist Duration Calculator</h3>
+<p>Calculate total duration of a YouTube playlist.</p>
+</a>
+
+<a class="tool-card" href="/tools/video-idea-generator.html">
+<h3>Video Idea Generator</h3>
+<p>Generate creative ideas for your next video.</p>
+</a>
+
+<a class="tool-card" href="/tools/earnings-calculator.html">
+<h3>YouTube Earnings Calculator</h3>
+<p>Estimate how much money a YouTube channel earns.</p>
+</a>
+
 </div>
-
-<div class="tool">
-<h3>YouTube Thumbnail Downloader</h3>
-<p>Download full resolution thumbnails easily.</p>
-</div>
-
-<div class="tool">
-<h3>YouTube Tag Generator</h3>
-<p>Generate SEO optimized tags for your videos.</p>
-</div>
-
-<div class="tool">
-<h3>YouTube Title Generator</h3>
-<p>Create catchy titles to increase clicks.</p>
-</div>
-
-<div class="tool">
-<h3>YouTube Description Generator</h3>
-<p>Generate professional video descriptions.</p>
-</div>
-
-<div class="tool">
-<h3>YouTube Hashtag Generator</h3>
-<p>Find trending hashtags for better reach.</p>
-</div>
-
-<div class="tool">
-<h3>YouTube Keyword Tool</h3>
-<p>Discover keywords for video ranking.</p>
-</div>
-
-<div class="tool">
-<h3>Playlist Time Calculator</h3>
-<p>Calculate total playlist duration.</p>
-</div>
-
-</div>
-
-</section>
-
-
-<section class="about">
-
-<h2>About ProYouTube Tools</h2>
-
-<p>
-ProYouTube Tools is an all-in-one toolkit designed for YouTube creators.
-Our platform helps creators download videos, generate tags, create titles
-and optimize their video SEO.
-</p>
-
-<p>
-Whether you are a beginner or an experienced creator, these tools help
-you save time and grow faster on YouTube.
-</p>
 
 </section>
 
 
 <footer>
 
-<div class="footer-links">
-
-<a href="/about.html">About</a>
-<a href="/privacy.html">Privacy Policy</a>
-<a href="/terms.html">Terms of Service</a>
-
-</div>
-
 <p>© 2026 ProYouTube Tools</p>
 
+<div class="footer-links">
+<a href="/about.html">About</a>
+<a href="/privacy.html">Privacy Policy</a>
+<a href="/terms.html">Terms</a>
+</div>
+
 </footer>
-<script>
 
-async function download(){
-
-let url=document.getElementById("url").value
-
-if(!url){
-alert("Please paste a YouTube link")
-return
-}
-
-document.getElementById("result").innerHTML=
-`<div class="loader"></div>`
-
-let res=await fetch("/download?url="+encodeURIComponent(url))
-let data=await res.json()
-
-let html=`
-
-<div class="video-container">
-
-<div class="video-card">
-
-<img src="https://img.youtube.com/vi/${data.id}/hqdefault.jpg">
-
-<h3>${data.title}</h3>
-
-<p>Channel: ${data.channel}</p>
-
-<p>Duration: ${data.duration}</p>
-
-<button onclick="copyLink()">Copy Video Link</button>
-
-</div>
-
-
-<div class="download-card">
-
-<div class="tabs">
-
-<button class="tab active" onclick="showTab('video')">Video</button>
-<button class="tab" onclick="showTab('audio')">Audio</button>
-
-</div>
-
-<div id="video" class="tab-content active">
-`
-
-data.formats.forEach(f=>{
-
-html+=`
-
-<div class="download-row">
-
-<span>🎬 ${f.quality}</span>
-
-<a href="${f.url}" target="_blank">Download</a>
-
-</div>
-
-`
-
-})
-
-html+=`
-
-</div>
-
-<div id="audio" class="tab-content">
-
-<div class="download-row">
-<span>🎵 MP3 320kbps</span>
-<a href="#">Download</a>
-</div>
-
-<div class="download-row">
-<span>🎵 MP3 128kbps</span>
-<a href="#">Download</a>
-</div>
-
-</div>
-
-</div>
-
-</div>
-`
-
-document.getElementById("result").innerHTML=html
-
-}
-
-function copyLink(){
-
-let url=document.getElementById("url").value
-
-navigator.clipboard.writeText(url)
-
-alert("Link copied!")
-
-}
-
-function showTab(tab){
-
-document.querySelectorAll(".tab-content").forEach(el=>{
-el.classList.remove("active")
-})
-
-document.querySelectorAll(".tab").forEach(el=>{
-el.classList.remove("active")
-})
-
-document.getElementById(tab).classList.add("active")
-
-event.target.classList.add("active")
-
-}
-
-</script>
 </body>
 </html>
