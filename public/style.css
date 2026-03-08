@@ -1,60 +1,83 @@
 body{
 font-family:Arial;
-background:#f4f6f9;
 margin:0;
+background:#f5f7fb;
 }
 
 header{
-background:#ff0000;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:20px;
+background:#111;
 color:white;
-text-align:center;
-padding:25px;
-}
-
-nav{
-background:#222;
-padding:10px;
-text-align:center;
 }
 
 nav a{
 color:white;
-margin:10px;
+margin-left:20px;
 text-decoration:none;
-font-weight:bold;
 }
 
-.tools{
+.hero{
+text-align:center;
+padding:60px 20px;
+background:linear-gradient(135deg,#ff4b2b,#ff416c);
+color:white;
+}
+
+.download-box{
+margin-top:20px;
+}
+
+.download-box input{
+padding:12px;
+width:320px;
+border:none;
+border-radius:5px;
+}
+
+.download-box button{
+padding:12px 20px;
+background:#111;
+color:white;
+border:none;
+border-radius:5px;
+cursor:pointer;
+}
+
+.features{
+padding:50px;
+text-align:center;
+}
+
+.feature-grid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
 gap:20px;
-padding:30px;
+margin-top:30px;
 }
 
-.tool-card{
+.feature{
 background:white;
 padding:20px;
 border-radius:10px;
-box-shadow:0 4px 12px rgba(0,0,0,0.1);
+box-shadow:0 4px 10px rgba(0,0,0,0.1);
 }
 
-.tool-card h3{
-margin-top:0;
+.about{
+padding:50px;
+background:#fff;
 }
 
-.tool-card a{
-display:inline-block;
-background:#ff0000;
-color:white;
-padding:8px 15px;
-border-radius:5px;
-text-decoration:none;
-margin-top:10px;
+.faq{
+padding:50px;
+background:#f2f2f2;
 }
 
 footer{
-background:#222;
-color:white;
 text-align:center;
-padding:10px;
+padding:20px;
+background:#111;
+color:white;
 }

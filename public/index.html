@@ -1,14 +1,13 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-
-<title>ProYouTube Tools - Free Tools for YouTube Creators</title>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta name="description" content="Free YouTube tools: downloader, tag generator, title generator, thumbnail downloader">
+<title>ProYouTube Tools – Free YouTube Creator Tools</title>
+
+<meta name="description" content="ProYouTube Tools provides free tools for YouTube creators including video downloader, tag generator, title generator and more.">
 
 <link rel="stylesheet" href="style.css">
 
@@ -17,49 +16,140 @@
 <body>
 
 <header>
-<h1>ProYouTube Tools</h1>
-<p>Free Tools for YouTube Creators</p>
-</header>
+
+<div class="logo">
+ProYouTube Tools
+</div>
 
 <nav>
 <a href="/">Home</a>
 <a href="/tools/downloader.html">Downloader</a>
 <a href="/tools/tag-generator.html">Tag Generator</a>
 <a href="/tools/title-generator.html">Title Generator</a>
-<a href="/tools/thumbnail-downloader.html">Thumbnail</a>
 </nav>
 
-<section class="tools">
+</header>
 
-<div class="tool-card">
-<h3>YouTube Video Downloader</h3>
-<p>Download videos in different quality.</p>
-<a href="/tools/downloader.html">Open Tool</a>
+
+<section class="hero">
+
+<h1>Download & Optimize Your YouTube Content</h1>
+
+<p>
+Free powerful tools for YouTube creators. Download videos, generate tags,
+create better titles and improve your channel growth.
+</p>
+
+<div class="download-box">
+
+<input id="url" placeholder="Paste YouTube video link here">
+
+<button onclick="download()">Download</button>
+
 </div>
 
-<div class="tool-card">
-<h3>YouTube Tag Generator</h3>
-<p>Generate SEO tags for your videos.</p>
-<a href="/tools/tag-generator.html">Open Tool</a>
+<div id="result"></div>
+
+</section>
+
+
+<section class="features">
+
+<h2>Why Use ProYouTube Tools?</h2>
+
+<div class="feature-grid">
+
+<div class="feature">
+<h3>Fast Video Downloader</h3>
+<p>Download YouTube videos instantly in multiple quality formats.</p>
 </div>
 
-<div class="tool-card">
-<h3>Title Generator</h3>
-<p>Create high click titles.</p>
-<a href="/tools/title-generator.html">Open Tool</a>
+<div class="feature">
+<h3>Creator SEO Tools</h3>
+<p>Generate optimized titles, tags and descriptions to grow faster.</p>
 </div>
 
-<div class="tool-card">
-<h3>Thumbnail Downloader</h3>
-<p>Download YouTube thumbnails.</p>
-<a href="/tools/thumbnail-downloader.html">Open Tool</a>
+<div class="feature">
+<h3>Free & Unlimited</h3>
+<p>All tools are completely free and available anytime.</p>
+</div>
+
+<div class="feature">
+<h3>Works on All Devices</h3>
+<p>Use our tools on desktop, tablet and mobile devices.</p>
+</div>
+
 </div>
 
 </section>
 
+
+<section class="about">
+
+<h2>About ProYouTube Tools</h2>
+
+<p>
+ProYouTube Tools is an all-in-one toolkit designed to help YouTube creators
+improve their content and productivity. Our platform offers tools such as
+video downloading, SEO tag generation, title creation and more.
+</p>
+
+<p>
+Whether you're a beginner creator or a professional YouTuber, our tools
+help you optimize your workflow and grow your audience faster.
+</p>
+
+</section>
+
+
+<section class="faq">
+
+<h2>Frequently Asked Questions</h2>
+
+<h4>Is ProYouTube Tools free?</h4>
+<p>Yes, all tools on our platform are completely free to use.</p>
+
+<h4>Can I download videos in HD quality?</h4>
+<p>Our downloader supports multiple video qualities depending on availability.</p>
+
+<h4>Do I need to install software?</h4>
+<p>No. All tools run directly inside your browser.</p>
+
+</section>
+
+
 <footer>
+
 <p>© 2026 ProYouTube Tools</p>
+
+<p>
+Free tools for YouTube creators.
+</p>
+
 </footer>
+
+
+<script>
+
+async function download(){
+
+let url=document.getElementById("url").value
+
+let res=await fetch("/download?url="+encodeURIComponent(url))
+
+let data=await res.json()
+
+let html=""
+
+data.formats.forEach(f=>{
+html+=`<a href="${f.url}" target="_blank">Download ${f.quality}</a><br>`
+})
+
+document.getElementById("result").innerHTML=html
+
+}
+
+</script>
 
 </body>
 </html>
