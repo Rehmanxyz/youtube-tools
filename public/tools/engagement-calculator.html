@@ -1,0 +1,28 @@
+<h1>YouTube Engagement Calculator</h1>
+
+<input id="viewsCount" placeholder="Views">
+
+<input id="likesCount" placeholder="Likes">
+
+<input id="commentsCount" placeholder="Comments">
+
+<button onclick="calcEngagement()">Calculate</button>
+
+<p id="engagementResult"></p>
+
+<script>
+
+function calcEngagement(){
+
+let views = Number(document.getElementById("viewsCount").value)
+let likes = Number(document.getElementById("likesCount").value)
+let comments = Number(document.getElementById("commentsCount").value)
+
+let rate = ((likes + comments) / views) * 100
+
+document.getElementById("engagementResult").innerText =
+rate.toFixed(2) + "% engagement rate"
+
+}
+
+</script>

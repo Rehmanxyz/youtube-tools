@@ -1,23 +1,9 @@
 <h1>YouTube Earnings Calculator</h1>
 
-<input id="views" placeholder="Monthly Views">
+<input id="views" placeholder="Enter monthly views">
 
-<button onclick="calc()">Calculate</button>
+<button onclick="calculateEarnings()">Calculate</button>
 
-<p id="result"></p>
+<p id="earningsResult"></p>
 
-<script>
-
-function calc(){
-
-let views = document.getElementById("views").value
-
-let low = views * 0.002
-let high = views * 0.01
-
-document.getElementById("result").innerText =
-"Estimated earnings: $" + low.toFixed(2) + " - $" + high.toFixed(2)
-
-}
-
-</script>
+<script src="/script.js"></script>
