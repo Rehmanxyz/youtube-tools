@@ -4,11 +4,11 @@
 <head>
 
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>ProYouTube Tools – Free YouTube Creator Tools</title>
+<title>ProYouTube Tools – Free YouTube Tools</title>
 
-<meta name="description" content="Free YouTube tools for creators. Download videos, generate tags, titles, descriptions and grow your channel.">
+<meta name="description" content="Free YouTube tools for creators. Download videos, generate tags, titles and optimize your channel growth.">
 
 <link rel="stylesheet" href="style.css">
 
@@ -21,10 +21,13 @@
 <div class="logo">ProYouTube Tools</div>
 
 <nav>
+
 <a href="/">Home</a>
-<a href="#">Downloader</a>
-<a href="#">Tag Generator</a>
-<a href="#">Title Generator</a>
+<a href="/tools/downloader.html">Downloader</a>
+<a href="/about.html">About</a>
+<a href="/privacy.html">Privacy</a>
+<a href="/terms.html">Terms</a>
+
 </nav>
 
 </header>
@@ -36,102 +39,59 @@
 
 <p>
 Free powerful tools for YouTube creators. Download videos, generate tags,
-create better titles and improve your channel growth.
+create better titles and improve channel growth.
 </p>
 
-<div class="download-box">
-
-<input id="url" placeholder="Paste YouTube video link here">
-
-<button onclick="download()">Download</button>
-
-</div>
-
-<div id="result"></div>
+<a class="main-btn" href="/tools/downloader.html">Open Downloader</a>
 
 </section>
 
 
-<section class="tools-section">
+<section class="tools">
 
-<h2 class="tools-title">Popular YouTube Tools</h2>
+<h2>Popular YouTube Tools</h2>
 
-<div class="tools-grid">
+<div class="tool-grid">
 
-<div class="tool-box">
+<div class="tool">
 <h3>YouTube Video Downloader</h3>
-<p>Download YouTube videos in HD and other formats.</p>
+<p>Download YouTube videos in HD quality instantly.</p>
+<a href="/tools/downloader.html">Open Tool</a>
 </div>
 
-<div class="tool-box">
+<div class="tool">
 <h3>YouTube Thumbnail Downloader</h3>
-<p>Download high quality thumbnails instantly.</p>
+<p>Download full resolution thumbnails easily.</p>
 </div>
 
-<div class="tool-box">
+<div class="tool">
 <h3>YouTube Tag Generator</h3>
-<p>Generate SEO optimized tags for better ranking.</p>
+<p>Generate SEO optimized tags for your videos.</p>
 </div>
 
-<div class="tool-box">
+<div class="tool">
 <h3>YouTube Title Generator</h3>
 <p>Create catchy titles to increase clicks.</p>
 </div>
 
-<div class="tool-box">
+<div class="tool">
 <h3>YouTube Description Generator</h3>
-<p>Create optimized video descriptions quickly.</p>
+<p>Generate professional video descriptions.</p>
 </div>
 
-<div class="tool-box">
+<div class="tool">
 <h3>YouTube Hashtag Generator</h3>
-<p>Find trending hashtags to reach more viewers.</p>
+<p>Find trending hashtags for better reach.</p>
 </div>
 
-<div class="tool-box">
-<h3>YouTube Keyword Generator</h3>
-<p>Discover high traffic keywords for videos.</p>
+<div class="tool">
+<h3>YouTube Keyword Tool</h3>
+<p>Discover keywords for video ranking.</p>
 </div>
 
-<div class="tool-box">
+<div class="tool">
 <h3>Playlist Time Calculator</h3>
-<p>Calculate total playlist duration instantly.</p>
-</div>
-
-<div class="tool-box">
-<h3>YouTube Channel Name Generator</h3>
-<p>Generate creative YouTube channel names.</p>
-</div>
-
-</div>
-
-</section>
-
-
-<section class="features">
-
-<h2>Why Use ProYouTube Tools?</h2>
-
-<div class="feature-grid">
-
-<div class="feature">
-<h3>Fast Video Downloader</h3>
-<p>Download videos instantly in multiple formats.</p>
-</div>
-
-<div class="feature">
-<h3>Creator SEO Tools</h3>
-<p>Generate optimized titles, tags and descriptions.</p>
-</div>
-
-<div class="feature">
-<h3>Free & Unlimited</h3>
-<p>All tools are completely free and unlimited.</p>
-</div>
-
-<div class="feature">
-<h3>Works on All Devices</h3>
-<p>Use tools on desktop, tablet and mobile.</p>
+<p>Calculate total playlist duration.</p>
 </div>
 
 </div>
@@ -144,14 +104,14 @@ create better titles and improve your channel growth.
 <h2>About ProYouTube Tools</h2>
 
 <p>
-ProYouTube Tools is an all-in-one toolkit designed to help YouTube creators
-improve their workflow. Our platform provides powerful tools including
-video downloader, tag generator, title generator and SEO optimization tools.
+ProYouTube Tools is an all-in-one toolkit designed for YouTube creators.
+Our platform helps creators download videos, generate tags, create titles
+and optimize their video SEO.
 </p>
 
 <p>
 Whether you are a beginner or an experienced creator, these tools help
-you grow faster and manage your YouTube content more efficiently.
+you save time and grow faster on YouTube.
 </p>
 
 </section>
@@ -159,33 +119,17 @@ you grow faster and manage your YouTube content more efficiently.
 
 <footer>
 
+<div class="footer-links">
+
+<a href="/about.html">About</a>
+<a href="/privacy.html">Privacy Policy</a>
+<a href="/terms.html">Terms of Service</a>
+
+</div>
+
 <p>© 2026 ProYouTube Tools</p>
 
 </footer>
 
-
-<script>
-
-async function download(){
-
-let url=document.getElementById("url").value
-
-let res=await fetch("/download?url="+encodeURIComponent(url))
-
-let data=await res.json()
-
-let html=""
-
-data.formats.forEach(f=>{
-html+=`<a href="${f.url}" target="_blank">Download ${f.quality}</a><br>`
-})
-
-document.getElementById("result").innerHTML=html
-
-}
-
-</script>
-
 </body>
-
 </html>

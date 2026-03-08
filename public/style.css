@@ -1,7 +1,7 @@
 body{
 font-family:Arial;
 margin:0;
-background:#f5f7fb;
+background:#f4f6fb;
 }
 
 header{
@@ -12,43 +12,6 @@ padding:20px;
 background:#111;
 color:white;
 }
-.tool-page{
-text-align:center;
-padding:60px 20px;
-background:#f5f7fb;
-}
-
-.tool-page h1{
-font-size:32px;
-margin-bottom:10px;
-}
-
-.tool-page p{
-max-width:700px;
-margin:auto;
-margin-bottom:25px;
-}
-
-.tool-page input{
-padding:12px;
-width:300px;
-border-radius:5px;
-border:1px solid #ddd;
-}
-
-.tool-page button{
-padding:12px 18px;
-background:#ff416c;
-color:white;
-border:none;
-border-radius:5px;
-cursor:pointer;
-margin-left:10px;
-}
-.logo{
-font-weight:bold;
-font-size:20px;
-}
 
 nav a{
 color:white;
@@ -58,80 +21,62 @@ text-decoration:none;
 
 .hero{
 text-align:center;
-padding:70px 20px;
+padding:80px 20px;
 background:linear-gradient(135deg,#ff4b2b,#ff416c);
 color:white;
 }
 
-.download-box{
+.main-btn{
+display:inline-block;
 margin-top:20px;
-}
-
-.download-box input{
-padding:12px;
-width:320px;
-border:none;
-border-radius:5px;
-}
-
-.download-box button{
-padding:12px 20px;
-background:#111;
+padding:12px 25px;
+background:black;
 color:white;
-border:none;
-border-radius:5px;
-cursor:pointer;
+text-decoration:none;
+border-radius:6px;
 }
 
-.tools-section{
-padding:60px 20px;
+.tools{
+padding:60px;
 text-align:center;
-background:white;
 }
 
-.tools-title{
-font-size:32px;
-margin-bottom:40px;
-}
-
-.tools-grid{
+.tool-grid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
 gap:20px;
-max-width:1200px;
-margin:auto;
+margin-top:30px;
 }
 
-.tool-box{
-background:#f4f6fb;
+.tool{
+background:white;
 padding:25px;
 border-radius:10px;
-box-shadow:0 5px 15px rgba(0,0,0,0.08);
+box-shadow:0 5px 15px rgba(0,0,0,0.1);
 }
 
-.feature-grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:20px;
-padding:40px;
-}
-
-.feature{
-background:white;
-padding:20px;
-border-radius:10px;
-box-shadow:0 4px 10px rgba(0,0,0,0.1);
+.tool a{
+display:inline-block;
+margin-top:10px;
+color:#ff416c;
+text-decoration:none;
 }
 
 .about{
-padding:50px;
-background:#fff;
+padding:60px;
 text-align:center;
+background:white;
 }
 
 footer{
-text-align:center;
-padding:20px;
 background:#111;
 color:white;
+text-align:center;
+padding:30px;
+}
+
+.footer-links a{
+color:white;
+margin:10px;
+text-decoration:none;
 }
