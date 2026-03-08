@@ -12,6 +12,43 @@ padding:20px;
 background:#111;
 color:white;
 }
+.tool-page{
+text-align:center;
+padding:60px 20px;
+background:#f5f7fb;
+}
+
+.tool-page h1{
+font-size:32px;
+margin-bottom:10px;
+}
+
+.tool-page p{
+max-width:700px;
+margin:auto;
+margin-bottom:25px;
+}
+
+.tool-page input{
+padding:12px;
+width:300px;
+border-radius:5px;
+border:1px solid #ddd;
+}
+
+.tool-page button{
+padding:12px 18px;
+background:#ff416c;
+color:white;
+border:none;
+border-radius:5px;
+cursor:pointer;
+margin-left:10px;
+}
+.logo{
+font-weight:bold;
+font-size:20px;
+}
 
 nav a{
 color:white;
@@ -21,7 +58,7 @@ text-decoration:none;
 
 .hero{
 text-align:center;
-padding:60px 20px;
+padding:70px 20px;
 background:linear-gradient(135deg,#ff4b2b,#ff416c);
 color:white;
 }
@@ -46,16 +83,37 @@ border-radius:5px;
 cursor:pointer;
 }
 
-.features{
-padding:50px;
+.tools-section{
+padding:60px 20px;
 text-align:center;
+background:white;
+}
+
+.tools-title{
+font-size:32px;
+margin-bottom:40px;
+}
+
+.tools-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
+max-width:1200px;
+margin:auto;
+}
+
+.tool-box{
+background:#f4f6fb;
+padding:25px;
+border-radius:10px;
+box-shadow:0 5px 15px rgba(0,0,0,0.08);
 }
 
 .feature-grid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
 gap:20px;
-margin-top:30px;
+padding:40px;
 }
 
 .feature{
@@ -68,11 +126,7 @@ box-shadow:0 4px 10px rgba(0,0,0,0.1);
 .about{
 padding:50px;
 background:#fff;
-}
-
-.faq{
-padding:50px;
-background:#f2f2f2;
+text-align:center;
 }
 
 footer{
