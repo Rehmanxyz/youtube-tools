@@ -16,19 +16,51 @@ tools[0].style.display = "block";
 
 // Video Downloader
 async function downloadVideo() {
-  let url = document.getElementById("videoURL").value.trim();
-  if (!url) { alert("Enter URL"); return; }
-  let res = await fetch(`/download?url=${encodeURIComponent(url)}`);
-  let data = await res.json();
-  if (data.error) {
-    document.getElementById("downloadResult").innerText = data.error;
+
+  const url = document.getElementById("videoURL").value.trim();
+
+  if (!url) {
+    alert("Please enter a YouTube URL");
     return;
   }
-  let html = "";
-  data.formats.forEach(f => {
-    html += `<a href="${f.url}" target="_blank">Download ${f.quality}</a><br>`;
-  });
-  document.getElementById("downloadResult").innerHTML = html;
+
+  const resultBox = document.getElementById("downloadResult");
+  resultBox.innerHTML = "Loading video info...";
+
+  try {
+
+    const response = await fetch("/download?url=" + encodeURIComponent(url));
+    const data = await response.json();
+
+    if (data.error) {
+      resultBox.innerText = data.error;
+      return;
+    }
+
+    let html = `
+      <div style="margin-bottom:15px">
+        <img src="${data.thumbnail}" width="200"><br>
+        <strong>${data.title}</strong><br>
+        Channel: ${data.channel}<br>
+      </div>
+    `;
+
+    data.formats.forEach(f => {
+      html += `
+        <a href="${f.url}" target="_blank">
+          Download ${f.quality}
+        </a><br>
+      `;
+    });
+
+    resultBox.innerHTML = html;
+
+  } catch (error) {
+
+    resultBox.innerText = "Failed to fetch video.";
+
+  }
+
 }
 
 // Tag Generator
