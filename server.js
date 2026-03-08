@@ -1,47 +1,47 @@
-const express = require("express")
-const ytdl = require("@distube/ytdl-core")
-const app = express()
+const express = require("express");
+const ytdl = require("@distube/ytdl-core");
 
-app.use(express.static("public"))
+const app = express();
+
+app.use(express.static("public"));
 
 app.get("/download", async (req, res) => {
 
-const url = req.query.url
+  const url = req.query.url;
 
-if(!url) return res.json({error:"No URL provided"})
+  if (!url) {
+    return res.json({ error: "No URL provided" });
+  }
 
-try{
+  try {
 
-const info = await ytdl.getInfo(url)
+    const info = await ytdl.getInfo(url);
 
-const formats = ytdl.filterFormats(info.formats, "videoandaudio")
+    const formats = ytdl.filterFormats(info.formats, "videoandaudio");
 
-res.json({
+    res.json({
+      title: info.videoDetails.title,
+      id: info.videoDetails.videoId,
+      channel: info.videoDetails.author.name,
+      duration: info.videoDetails.lengthSeconds,
+      formats: formats.slice(0,5).map(f => ({
+        quality: f.qualityLabel || "Auto",
+        url: f.url
+      }))
+    });
 
-title: info.videoDetails.title,
-id: info.videoDetails.videoId,
-channel: info.videoDetails.author.name,
-duration: info.videoDetails.lengthSeconds + " sec",
+  } catch (err) {
 
-formats: formats.map(f=>({
+    console.log("ERROR:", err);
 
-quality: f.qualityLabel || "Auto",
-url: f.url
+    res.json({ error: "Error fetching video" });
 
-}))
+  }
 
-})
+});
 
-}catch(err){
+const PORT = process.env.PORT || 3000;
 
-console.log(err)
-
-res.json({error:"Error fetching video"})
-
-}
-
-})
-
-app.listen(3000, () => {
-console.log("Server running on port 3000")
-})
+app.listen(PORT, () => {
+  console.log("Server running on port " + PORT);
+});
