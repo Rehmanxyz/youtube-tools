@@ -1,18 +1,26 @@
 // =========================
 // TOOL SEARCH
 // =========================
-const searchInput = document.getElementById("toolSearch");
+const toolSearch = document.getElementById("toolSearch");
 
-if (searchInput) {
-  searchInput.addEventListener("input", () => {
-    const value = searchInput.value.toLowerCase();
+if (toolSearch) {
+
+  toolSearch.addEventListener("input", function () {
+
+    const value = this.value.toLowerCase();
+
     const cards = document.querySelectorAll(".tool-card");
 
     cards.forEach(card => {
+
       const text = card.innerText.toLowerCase();
+
       card.style.display = text.includes(value) ? "block" : "none";
+
     });
+
   });
+
 }
 
 
@@ -23,20 +31,26 @@ function generateTags() {
 
   const topic = document.getElementById("tagTopic").value.trim();
 
-  if (!topic) return;
+  if (!topic) {
+    alert("Enter a topic");
+    return;
+  }
 
   const words = topic.split(" ");
 
   let tags = [];
 
   words.forEach(word => {
+
     tags.push(word);
     tags.push(word + " tutorial");
     tags.push("best " + word);
     tags.push(word + " tips");
+
   });
 
   document.getElementById("tagsResult").innerText = tags.join(", ");
+
 }
 
 
@@ -47,18 +61,24 @@ function generateTitles() {
 
   const topic = document.getElementById("titleTopic").value.trim();
 
-  if (!topic) return;
+  if (!topic) {
+    alert("Enter a topic");
+    return;
+  }
 
   const templates = [
+
     "How to " + topic,
     "10 Tips for " + topic,
     "Beginner Guide to " + topic,
     "Best Way to " + topic,
     topic + " Explained"
+
   ];
 
   document.getElementById("titleResult").innerText =
     templates.join("\n");
+
 }
 
 
@@ -69,16 +89,21 @@ function generateDescription() {
 
   const topic = document.getElementById("descTopic").value.trim();
 
-  if (!topic) return;
+  if (!topic) {
+    alert("Enter a topic");
+    return;
+  }
 
-  const description =
-`In this video we talk about ${topic}.
+  const description = `
+In this video we talk about ${topic}.
 
 If you enjoyed this video make sure to like and subscribe for more helpful content.
 
-#${topic.replace(" ", "")}`;
+#${topic.replace(/\s+/g, "")}
+`;
 
   document.getElementById("descResult").innerText = description;
+
 }
 
 
@@ -89,17 +114,21 @@ function generateHashtags() {
 
   const topic = document.getElementById("hashtagTopic").value.trim();
 
-  if (!topic) return;
+  if (!topic) {
+    alert("Enter a topic");
+    return;
+  }
 
   const words = topic.split(" ");
 
-  const hashtags = words.map(w => "#" + w);
+  let hashtags = words.map(w => "#" + w);
 
   hashtags.push("#youtube");
   hashtags.push("#contentcreator");
 
   document.getElementById("hashtagResult").innerText =
     hashtags.join(" ");
+
 }
 
 
@@ -110,18 +139,24 @@ function generateKeywords() {
 
   const topic = document.getElementById("keywordTopic").value.trim();
 
-  if (!topic) return;
+  if (!topic) {
+    alert("Enter a keyword");
+    return;
+  }
 
   const keywords = [
+
     topic,
     topic + " tutorial",
     topic + " tips",
     topic + " for beginners",
     "best " + topic
+
   ];
 
   document.getElementById("keywordResult").innerText =
     keywords.join(", ");
+
 }
 
 
@@ -130,8 +165,14 @@ function generateKeywords() {
 // =========================
 function calculatePlaylist() {
 
-  const lines =
-    document.getElementById("playlistTimes").value.split("\n");
+  const input = document.getElementById("playlistTimes").value;
+
+  if (!input) {
+    alert("Enter video times");
+    return;
+  }
+
+  const lines = input.split("\n");
 
   let totalSeconds = 0;
 
@@ -140,7 +181,9 @@ function calculatePlaylist() {
     const parts = line.split(":").map(Number);
 
     if (parts.length === 2) {
+
       totalSeconds += parts[0] * 60 + parts[1];
+
     }
 
   });
@@ -150,6 +193,7 @@ function calculatePlaylist() {
 
   document.getElementById("playlistResult").innerText =
     minutes + " minutes " + seconds + " seconds";
+
 }
 
 
@@ -159,17 +203,20 @@ function calculatePlaylist() {
 function generateVideoIdea() {
 
   const ideas = [
+
     "Top 10 Tips for YouTube Growth",
     "Beginner Guide to YouTube SEO",
     "How to Get Your First 1000 Subscribers",
     "Best Tools for YouTube Creators",
     "Common Mistakes New YouTubers Make"
+
   ];
 
-  const random =
+  const randomIdea =
     ideas[Math.floor(Math.random() * ideas.length)];
 
-  document.getElementById("ideaResult").innerText = random;
+  document.getElementById("ideaResult").innerText = randomIdea;
+
 }
 
 
@@ -178,13 +225,35 @@ function generateVideoIdea() {
 // =========================
 function calculateEarnings() {
 
-  const views = document.getElementById("views").value;
+  const views = Number(document.getElementById("views").value);
 
-  if (!views) return;
+  if (!views || views <= 0) {
+    alert("Enter valid views");
+    return;
+  }
 
   const low = views * 0.002;
   const high = views * 0.01;
 
   document.getElementById("earningsResult").innerText =
     "$" + low.toFixed(2) + " - $" + high.toFixed(2);
+
+}
+
+
+// =========================
+// COPY RESULT BUTTON
+// =========================
+function copyText(id) {
+
+  const element = document.getElementById(id);
+
+  if (!element) return;
+
+  const text = element.innerText;
+
+  navigator.clipboard.writeText(text)
+    .then(() => alert("Copied!"))
+    .catch(() => alert("Copy failed"));
+
 }
