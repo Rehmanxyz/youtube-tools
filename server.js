@@ -1,3 +1,4 @@
+process.env.YTDL_NO_UPDATE = "1";
 console.log("Server starting...");
 const express = require("express");
 const cors = require("cors");
@@ -32,7 +33,15 @@ app.get("/download", async (req, res) => {
 
   try {
 
-    const info = await ytdl.getInfo(url);
+    const info = await ytdl.getInfo(url, {
+  requestOptions: {
+    headers: {
+      "User-Agent":
+        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
+      "Accept-Language": "en-US,en;q=0.9"
+    }
+  }
+});
 
     const formats = ytdl.filterFormats(info.formats, "videoandaudio");
 
