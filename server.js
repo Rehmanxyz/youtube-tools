@@ -24,13 +24,16 @@ app.get("/download", async (req, res) => {
             .filterFormats(info.formats, "videoandaudio")
             .slice(0,5);
 
-        res.json({
-            title: info.videoDetails.title,
-            formats: formats.map(f => ({
-                quality: f.qualityLabel,
-                url: f.url
-            }))
-        });
+   res.json({
+title: info.videoDetails.title,
+id: info.videoDetails.videoId,
+channel: info.videoDetails.author.name,
+duration: info.videoDetails.lengthSeconds + " sec",
+formats: formats.map(f=>({
+quality:f.qualityLabel,
+url:f.url
+}))
+});
 
     } catch (e) {
         res.json({ error: "Error fetching video" });

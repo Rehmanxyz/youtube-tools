@@ -144,25 +144,116 @@ async function download(){
 let url=document.getElementById("url").value
 
 if(!url){
-alert("Please paste YouTube link")
+alert("Please paste a YouTube link")
 return
 }
 
-let res=await fetch("/download?url="+encodeURIComponent(url))
+document.getElementById("result").innerHTML=
+`<div class="loader"></div>`
 
+let res=await fetch("/download?url="+encodeURIComponent(url))
 let data=await res.json()
 
-let html=""
+let html=`
+
+<div class="video-container">
+
+<div class="video-card">
+
+<img src="https://img.youtube.com/vi/${data.id}/hqdefault.jpg">
+
+<h3>${data.title}</h3>
+
+<p>Channel: ${data.channel}</p>
+
+<p>Duration: ${data.duration}</p>
+
+<button onclick="copyLink()">Copy Video Link</button>
+
+</div>
+
+
+<div class="download-card">
+
+<div class="tabs">
+
+<button class="tab active" onclick="showTab('video')">Video</button>
+<button class="tab" onclick="showTab('audio')">Audio</button>
+
+</div>
+
+<div id="video" class="tab-content active">
+`
 
 data.formats.forEach(f=>{
-html+=`<a class="download-link" href="${f.url}" target="_blank">Download ${f.quality}</a><br>`
+
+html+=`
+
+<div class="download-row">
+
+<span>🎬 ${f.quality}</span>
+
+<a href="${f.url}" target="_blank">Download</a>
+
+</div>
+
+`
+
 })
+
+html+=`
+
+</div>
+
+<div id="audio" class="tab-content">
+
+<div class="download-row">
+<span>🎵 MP3 320kbps</span>
+<a href="#">Download</a>
+</div>
+
+<div class="download-row">
+<span>🎵 MP3 128kbps</span>
+<a href="#">Download</a>
+</div>
+
+</div>
+
+</div>
+
+</div>
+`
 
 document.getElementById("result").innerHTML=html
 
 }
 
-</script>
+function copyLink(){
 
+let url=document.getElementById("url").value
+
+navigator.clipboard.writeText(url)
+
+alert("Link copied!")
+
+}
+
+function showTab(tab){
+
+document.querySelectorAll(".tab-content").forEach(el=>{
+el.classList.remove("active")
+})
+
+document.querySelectorAll(".tab").forEach(el=>{
+el.classList.remove("active")
+})
+
+document.getElementById(tab).classList.add("active")
+
+event.target.classList.add("active")
+
+}
+
+</script>
 </body>
 </html>
