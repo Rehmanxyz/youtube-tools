@@ -12,19 +12,12 @@ app.get("/", (req, res) => {
   res.sendFile(__dirname + "/public/index.html");
 });
 
-app.get("/", (req, res) => {
-  res.sendFile(__dirname + "/public/index.html");
-});
-
 app.get("/health", (req, res) => {
   res.send("OK");
 });
 
-app.get("/", (req, res) => {
-  res.sendFile(__dirname + "/public/index.html");
-});
-
 app.get("/download", async (req, res) => {
+
   const url = req.query.url;
 
   if (!url) {
@@ -36,8 +29,8 @@ app.get("/download", async (req, res) => {
   }
 
   try {
-    const info = await ytdl.getInfo(url);
 
+    const info = await ytdl.getInfo(url);
     const formats = ytdl.filterFormats(info.formats, "videoandaudio");
 
     res.json({
@@ -45,19 +38,22 @@ app.get("/download", async (req, res) => {
       thumbnail: info.videoDetails.thumbnails.pop().url,
       channel: info.videoDetails.author.name,
       duration: info.videoDetails.lengthSeconds,
-      formats: formats.slice(0, 5).map(f => ({
+      formats: formats.slice(0,5).map(f => ({
         quality: f.qualityLabel || "Auto",
         url: f.url
       }))
     });
 
-  } catch (error) {
-    console.error(error);
+  } catch (err) {
+
+    console.log(err);
     res.status(500).json({ error: "Error fetching video" });
+
   }
+
 });
 
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
   console.log("Server running on port " + PORT);
