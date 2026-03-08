@@ -1,6 +1,6 @@
 const express = require("express");
 const cors = require("cors");
-const ytdl = require("@distube/ytdl-core");
+const ytdl = require("ytdl-core");
 
 const app = express();
 
@@ -31,11 +31,12 @@ app.get("/download", async (req, res) => {
   try {
 
     const info = await ytdl.getInfo(url);
+
     const formats = ytdl.filterFormats(info.formats, "videoandaudio");
 
     res.json({
       title: info.videoDetails.title,
-      thumbnail: info.videoDetails.thumbnails.pop().url,
+      thumbnail: info.videoDetails.thumbnails[0].url,
       channel: info.videoDetails.author.name,
       duration: info.videoDetails.lengthSeconds,
       formats: formats.slice(0,5).map(f => ({
@@ -44,10 +45,13 @@ app.get("/download", async (req, res) => {
       }))
     });
 
-  } catch (err) {
+  } catch (error) {
 
-    console.log(err);
-    res.status(500).json({ error: "Error fetching video" });
+    console.error(error);
+
+    res.status(500).json({
+      error: "Failed to fetch video"
+    });
 
   }
 
@@ -56,5 +60,5 @@ app.get("/download", async (req, res) => {
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
-  console.log("Server running on port " + PORT);
+  console.log("Server running on port", PORT);
 });
