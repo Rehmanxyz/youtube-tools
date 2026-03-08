@@ -80,3 +80,35 @@ color:white;
 margin:10px;
 text-decoration:none;
 }
+.search-box{
+margin-top:25px;
+}
+
+.search-box input{
+
+width:350px;
+padding:12px;
+border-radius:6px;
+border:none;
+margin-right:10px;
+}
+
+.search-box button{
+
+padding:12px 18px;
+background:black;
+color:white;
+border:none;
+border-radius:6px;
+cursor:pointer;
+}
+
+.download-link{
+display:inline-block;
+margin-top:10px;
+color:white;
+background:#111;
+padding:10px 15px;
+border-radius:6px;
+text-decoration:none;
+}

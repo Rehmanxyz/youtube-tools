@@ -38,11 +38,18 @@
 <h1>Download & Optimize Your YouTube Content</h1>
 
 <p>
-Free powerful tools for YouTube creators. Download videos, generate tags,
-create better titles and improve channel growth.
+Free powerful tools for YouTube creators. Download videos instantly and improve your channel growth.
 </p>
 
-<a class="main-btn" href="/tools/downloader.html">Open Downloader</a>
+<div class="search-box">
+
+<input id="url" type="text" placeholder="Paste YouTube video link here">
+
+<button onclick="download()">Download</button>
+
+</div>
+
+<div id="result"></div>
 
 </section>
 
@@ -130,6 +137,32 @@ you save time and grow faster on YouTube.
 <p>© 2026 ProYouTube Tools</p>
 
 </footer>
+<script>
+
+async function download(){
+
+let url=document.getElementById("url").value
+
+if(!url){
+alert("Please paste YouTube link")
+return
+}
+
+let res=await fetch("/download?url="+encodeURIComponent(url))
+
+let data=await res.json()
+
+let html=""
+
+data.formats.forEach(f=>{
+html+=`<a class="download-link" href="${f.url}" target="_blank">Download ${f.quality}</a><br>`
+})
+
+document.getElementById("result").innerHTML=html
+
+}
+
+</script>
 
 </body>
 </html>
