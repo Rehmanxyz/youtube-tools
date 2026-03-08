@@ -16,6 +16,14 @@ app.get("/", (req, res) => {
   res.sendFile(__dirname + "/public/index.html");
 });
 
+app.get("/health", (req, res) => {
+  res.send("OK");
+});
+
+app.get("/", (req, res) => {
+  res.sendFile(__dirname + "/public/index.html");
+});
+
 app.get("/download", async (req, res) => {
   const url = req.query.url;
 
@@ -49,8 +57,8 @@ app.get("/download", async (req, res) => {
   }
 });
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 8080;
 
-app.listen(PORT, "0.0.0.0", () => {
+app.listen(PORT, () => {
   console.log("Server running on port " + PORT);
 });
