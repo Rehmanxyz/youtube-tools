@@ -1,44 +1,87 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>YouTube Downloader</title>
-<style>
-body{font-family:Arial;padding:40px}
-input{width:400px;padding:10px}
-button{padding:10px}
-</style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ProYouTube Tools</title>
+<link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-<h1>YouTube Video Downloader</h1>
+<header>
+  <h1>ProYouTube Tools</h1>
+  <p>All-in-One YouTube Creator Tools</p>
+</header>
 
-<input id="url" placeholder="Paste YouTube link">
-<button onclick="download()">Get Download Links</button>
+<nav>
+  <button class="tab-btn active" data-tool="download">Video Downloader</button>
+  <button class="tab-btn" data-tool="tags">Tag Generator</button>
+  <button class="tab-btn" data-tool="title">Title Generator</button>
+  <button class="tab-btn" data-tool="description">Description Generator</button>
+  <button class="tab-btn" data-tool="playlist">Playlist Calculator</button>
+  <button class="tab-btn" data-tool="comments">Comment Analyzer</button>
+  <button class="tab-btn" data-tool="videoIdea">Video Idea Generator</button>
+</nav>
 
-<div id="result"></div>
+<div class="container">
 
-<script>
+<!-- Video Downloader -->
+<div class="tool" id="download">
+  <h2>YouTube Video Downloader</h2>
+  <input type="text" id="videoURL" placeholder="Paste YouTube URL">
+  <button onclick="downloadVideo()">Get Download Links</button>
+  <div id="downloadResult"></div>
+</div>
 
-async function download(){
+<!-- Tag Generator -->
+<div class="tool" id="tags">
+  <h2>Tag Generator</h2>
+  <input type="text" id="tagTopic" placeholder="Enter video topic">
+  <button onclick="generateTags()">Generate Tags</button>
+  <p id="tagsResult"></p>
+</div>
 
-let url=document.getElementById("url").value
+<!-- Title Generator -->
+<div class="tool" id="title">
+  <h2>Title Generator</h2>
+  <input type="text" id="titleTopic" placeholder="Enter video topic">
+  <button onclick="generateTitles()">Generate Titles</button>
+  <p id="titleResult"></p>
+</div>
 
-let res=await fetch("/download?url="+encodeURIComponent(url))
+<!-- Description Generator -->
+<div class="tool" id="description">
+  <h2>Description Generator</h2>
+  <input type="text" id="descTopic" placeholder="Enter video topic">
+  <button onclick="generateDescription()">Generate Description</button>
+  <p id="descResult"></p>
+</div>
 
-let data=await res.json()
+<!-- Playlist Calculator -->
+<div class="tool" id="playlist">
+  <h2>Playlist Time Calculator</h2>
+  <textarea id="playlistTimes" placeholder="Enter video durations MM:SS per line"></textarea>
+  <button onclick="calculatePlaylist()">Calculate</button>
+  <p id="playlistResult"></p>
+</div>
 
-let html=""
+<!-- Comment Analyzer -->
+<div class="tool" id="comments">
+  <h2>Comment Analyzer</h2>
+  <textarea id="commentsInput" placeholder="Paste comments here"></textarea>
+  <button onclick="analyzeComments()">Analyze</button>
+  <p id="commentsResult"></p>
+</div>
 
-data.formats.forEach(v=>{
-html+=`<a href="${v.url}" target="_blank">Download ${v.quality}</a><br>`
-})
+<!-- Video Idea Generator -->
+<div class="tool" id="videoIdea">
+  <h2>Video Idea Generator</h2>
+  <button onclick="generateVideoIdea()">Generate Idea</button>
+  <p id="ideaResult"></p>
+</div>
 
-document.getElementById("result").innerHTML=html
+</div>
 
-}
-
-</script>
-
+<script src="script.js"></script>
 </body>
 </html>
