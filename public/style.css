@@ -93,3 +93,35 @@ border-radius:5px;
 cursor:pointer;
 
 }
+
+.result-card{
+
+background:white;
+
+padding:20px;
+
+margin-top:15px;
+
+border-radius:8px;
+
+box-shadow:0 3px 10px rgba(0,0,0,0.1);
+
+}
+
+.copy-btn{
+
+margin-top:10px;
+
+padding:8px 14px;
+
+background:#ff4d4d;
+
+color:white;
+
+border:none;
+
+border-radius:6px;
+
+cursor:pointer;
+
+}
