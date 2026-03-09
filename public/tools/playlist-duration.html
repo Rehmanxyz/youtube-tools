@@ -1,12 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Playlist Duration Calculator</title>
+
+<link rel="stylesheet" href="/style.css">
+
+</head>
+
+<body>
+
+<header class="navbar">
+
+<div class="logo">ProYouTube Tools</div>
+
+<nav>
+<a href="/">Home</a>
+<a href="/tools.html">All Tools</a>
+</nav>
+
+</header>
+
+<section class="tool-page">
+
 <h1>Playlist Duration Calculator</h1>
 
-<textarea id="playlistTimes" placeholder="Enter times like:
+<textarea id="playlistTimes"
+placeholder="Enter times like:
 3:20
 5:10
-2:30"></textarea>
+2:40"></textarea>
 
 <button onclick="calculatePlaylist()">Calculate</button>
 
+<div class="result-card">
+
 <p id="playlistResult"></p>
 
+<button class="copy-btn" onclick="copyText('playlistResult')">
+Copy Result
+</button>
+
+</div>
+
+</section>
+
 <script src="/script.js"></script>
+
+</body>
+</html>

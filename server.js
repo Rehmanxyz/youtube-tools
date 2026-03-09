@@ -1,5 +1,7 @@
 process.env.YTDL_NO_UPDATE = "1";
+
 console.log("Server starting...");
+
 const express = require("express");
 const cors = require("cors");
 const ytdl = require("ytdl-core");
@@ -9,16 +11,21 @@ const app = express();
 
 app.use(cors());
 app.use(express.json());
+
+/* serve static files */
 app.use(express.static(path.join(__dirname, "public")));
 
+/* homepage */
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "index.html"));
 });
 
+/* health check */
 app.get("/health", (req, res) => {
   res.send("OK");
 });
 
+/* youtube download api */
 app.get("/download", async (req, res) => {
 
   const url = req.query.url;
@@ -34,26 +41,29 @@ app.get("/download", async (req, res) => {
   try {
 
     const info = await ytdl.getInfo(url, {
-  requestOptions: {
-    headers: {
-      "User-Agent":
-        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
-      "Accept-Language": "en-US,en;q=0.9"
-    }
-  }
-});
+      requestOptions: {
+        headers: {
+          "User-Agent":
+            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
+          "Accept-Language": "en-US,en;q=0.9"
+        }
+      }
+    });
 
-    const formats = ytdl.filterFormats(info.formats, "videoandaudio");
+    const formats = ytdl
+      .filterFormats(info.formats, "videoandaudio")
+      .slice(0, 5)
+      .map(f => ({
+        quality: f.qualityLabel || "Auto",
+        url: f.url
+      }));
 
     res.json({
       title: info.videoDetails.title,
-      thumbnail: info.videoDetails.thumbnails?.[0]?.url || "",
+      thumbnail: info.videoDetails.thumbnails?.pop()?.url || "",
       channel: info.videoDetails.author?.name || "Unknown",
       duration: info.videoDetails.lengthSeconds,
-      formats: formats.slice(0,5).map(f => ({
-        quality: f.qualityLabel || "Auto",
-        url: f.url
-      }))
+      formats
     });
 
   } catch (error) {
@@ -68,8 +78,9 @@ app.get("/download", async (req, res) => {
 
 });
 
+/* start server */
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
-  console.log("Server running on port", PORT);
+  console.log(`Server running on port ${PORT}`);
 });

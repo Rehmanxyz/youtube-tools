@@ -1,10 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>YouTube Thumbnail Downloader</title>
+
+<link rel="stylesheet" href="/style.css">
+
+</head>
+
+<body>
+
+<header class="navbar">
+
+<div class="logo">ProYouTube Tools</div>
+
+<nav>
+<a href="/">Home</a>
+<a href="/tools.html">All Tools</a>
+</nav>
+
+</header>
+
+<section class="tool-page">
+
 <h1>YouTube Thumbnail Downloader</h1>
 
 <input id="thumbURL" placeholder="Paste YouTube video URL">
 
 <button onclick="getThumbnail()">Get Thumbnail</button>
 
+<div class="result-card">
+
 <div id="thumbnailResult"></div>
+
+</div>
+
+</section>
 
 <script>
 
@@ -23,3 +55,6 @@ document.getElementById("thumbnailResult").innerHTML =
 }
 
 </script>
+
+</body>
+</html>

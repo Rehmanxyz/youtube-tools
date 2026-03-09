@@ -1,14 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>YouTube Engagement Calculator</title>
+
+<link rel="stylesheet" href="/style.css">
+
+</head>
+
+<body>
+
+<header class="navbar">
+
+<div class="logo">ProYouTube Tools</div>
+
+<nav>
+<a href="/">Home</a>
+<a href="/tools.html">All Tools</a>
+</nav>
+
+</header>
+
+<section class="tool-page">
+
 <h1>YouTube Engagement Calculator</h1>
 
 <input id="viewsCount" placeholder="Views">
-
 <input id="likesCount" placeholder="Likes">
-
 <input id="commentsCount" placeholder="Comments">
 
-<button onclick="calcEngagement()">Calculate</button>
+<button onclick="calcEngagement()">Calculate Engagement</button>
+
+<div class="result-card">
 
 <p id="engagementResult"></p>
+
+<button class="copy-btn" onclick="copyText('engagementResult')">
+Copy Result
+</button>
+
+</div>
+
+</section>
+
+<script src="/script.js"></script>
 
 <script>
 
@@ -26,3 +62,6 @@ rate.toFixed(2) + "% engagement rate"
 }
 
 </script>
+
+</body>
+</html>
