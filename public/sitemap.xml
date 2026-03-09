@@ -1,11 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://youtube-tools.onrender.com/</loc>
+<priority>1.0</priority>
+</url>
+
+<url>
+<loc>https://youtube-tools.onrender.com/tools.html</loc>
 </url>
 
 <url>
 <loc>https://youtube-tools.onrender.com/tools/tag-generator.html</loc>
+</url>
+
+<url>
+<loc>https://youtube-tools.onrender.com/tools/title-generator.html</loc>
+</url>
+
+<url>
+<loc>https://youtube-tools.onrender.com/tools/description-generator.html</loc>
+</url>
+
+<url>
+<loc>https://youtube-tools.onrender.com/tools/keyword-generator.html</loc>
+</url>
+
+<url>
+<loc>https://youtube-tools.onrender.com/tools/hashtag-generator.html</loc>
+</url>
+
+<url>
+<loc>https://youtube-tools.onrender.com/tools/thumbnail-downloader.html</loc>
+</url>
+
+<url>
+<loc>https://youtube-tools.onrender.com/tools/playlist-duration.html</loc>
+</url>
+
+<url>
+<loc>https://youtube-tools.onrender.com/tools/video-idea-generator.html</loc>
+</url>
+
+<url>
+<loc>https://youtube-tools.onrender.com/tools/earnings-calculator.html</loc>
+</url>
+
+<url>
+<loc>https://youtube-tools.onrender.com/tools/engagement-calculator.html</loc>
 </url>
 
 </urlset>

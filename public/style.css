@@ -163,3 +163,33 @@ border-radius:6px;
 cursor:pointer;
 
 }
+
+.about-tools{
+
+padding:60px;
+background:#f9f9f9;
+text-align:center;
+
+}
+
+.about-tools p{
+
+max-width:800px;
+margin:auto;
+margin-top:10px;
+
+}
+
+.faq{
+
+padding:60px;
+max-width:900px;
+margin:auto;
+
+}
+
+.faq h3{
+
+margin-top:20px;
+
+}
