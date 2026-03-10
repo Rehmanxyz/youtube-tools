@@ -1,9 +1,15 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
 
-<title>YouTube Thumbnail Downloader</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>YouTube Thumbnail Downloader - Free Tool</title>
+
+<meta name="description"
+content="Download YouTube thumbnails in HD quality. Free YouTube thumbnail downloader tool for creators.">
 
 <link rel="stylesheet" href="/style.css">
 
@@ -22,9 +28,14 @@
 
 </header>
 
+
+<!-- TOOL SECTION -->
+
 <section class="tool-page">
 
 <h1>YouTube Thumbnail Downloader</h1>
+
+<p>Download high quality thumbnails from any YouTube video.</p>
 
 <input id="thumbURL" placeholder="Paste YouTube video URL">
 
@@ -38,18 +49,64 @@
 
 </section>
 
+
+<!-- SEO CONTENT -->
+
+<section class="tool-content">
+
+<h2>YouTube Thumbnail Downloader</h2>
+
+<p>
+This free YouTube Thumbnail Downloader allows you to download thumbnails
+from any YouTube video in high quality.
+</p>
+
+<h3>How to Download YouTube Thumbnails</h3>
+
+<ul>
+<li>Copy the YouTube video link.</li>
+<li>Paste it into the input box.</li>
+<li>Click the "Get Thumbnail" button.</li>
+<li>Download the thumbnail image.</li>
+</ul>
+
+<p>
+High quality thumbnails are useful for presentations, research,
+or content inspiration.
+</p>
+
+</section>
+
+
 <script>
 
 function getThumbnail(){
 
-const url = document.getElementById("thumbURL").value
+const url = document.getElementById("thumbURL").value.trim()
 
-const id = url.split("v=")[1]
+if(!url){
+alert("Please enter a YouTube URL")
+return
+}
 
-const thumb = "https://img.youtube.com/vi/" + id + "/maxresdefault.jpg"
+let videoId = ""
+
+if(url.includes("youtu.be/")){
+videoId = url.split("youtu.be/")[1].split("?")[0]
+}
+else if(url.includes("v=")){
+videoId = url.split("v=")[1].split("&")[0]
+}
+
+if(!videoId){
+alert("Invalid YouTube URL")
+return
+}
+
+const thumb = "https://img.youtube.com/vi/" + videoId + "/maxresdefault.jpg"
 
 document.getElementById("thumbnailResult").innerHTML =
-`<img src="${thumb}" width="400"><br>
+`<img src="${thumb}" width="400"><br><br>
 <a href="${thumb}" download>Download Thumbnail</a>`
 
 }
@@ -57,4 +114,5 @@ document.getElementById("thumbnailResult").innerHTML =
 </script>
 
 </body>
+
 </html>
