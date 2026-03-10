@@ -194,3 +194,25 @@ margin-top:20px;
 
 }
 
+.related-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+gap:15px;
+margin-top:20px;
+}
+
+.related-grid .tool-card{
+background:#f4f4f4;
+padding:15px;
+border-radius:8px;
+text-align:center;
+text-decoration:none;
+font-weight:600;
+color:#333;
+transition:0.2s;
+}
+
+.related-grid .tool-card:hover{
+background:#ff4747;
+color:white;
+}
