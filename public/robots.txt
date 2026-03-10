@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://youtube-tools.onrender.com/sitemap.xml
+Sitemap: https://youtube-tools-r11a.onrender.com/sitemap.xml
